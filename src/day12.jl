@@ -5,7 +5,7 @@ isnumber(str::AbstractString) = all(isdigit, str)
 
 function part1()
     lines = open("input/day12.txt") do f
-        readlines(f)
+        return readlines(f)
     end
 
     registers = Dict('a' => 0, 'b' => 0, 'c' => 0, 'd' => 0)
@@ -14,7 +14,8 @@ function part1()
         line = lines[i]
         if startswith(line, "cpy")
             _, source_str, destination_str = split(line)
-            source = isnumber(source_str) ? parse(Int, source_str) : registers[only(source_str)]
+            source =
+                isnumber(source_str) ? parse(Int, source_str) : registers[only(source_str)]
             destination = only(destination_str)
             registers[destination] = source
             i += 1
@@ -42,7 +43,7 @@ end
 
 function part2()
     lines = open("input/day12.txt") do f
-        readlines(f)
+        return readlines(f)
     end
 
     registers = Dict('a' => 0, 'b' => 0, 'c' => 1, 'd' => 0)
@@ -51,7 +52,8 @@ function part2()
         line = lines[i]
         if startswith(line, "cpy")
             _, source_str, destination_str = split(line)
-            source = isnumber(source_str) ? parse(Int, source_str) : registers[only(source_str)]
+            source =
+                isnumber(source_str) ? parse(Int, source_str) : registers[only(source_str)]
             destination = only(destination_str)
             registers[destination] = source
             i += 1
